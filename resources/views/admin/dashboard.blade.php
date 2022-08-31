@@ -6,9 +6,9 @@
             <div class="d-flex justify-content-between flex-wrap">
                 <div class="d-flex align-items-end flex-wrap">
                     <div class="me-md-3 me-xl-5">
-                    @if(session('status'))
-                        <h2>{{ session('status')}}</h2>
-                    @endif
+                        @if (session('status'))
+                            <h2 class="alert alert-success w-full">{{ session('status') }}</h2>
+                        @endif
                         <p class="mb-md-0">Your analytics dashboard template.</p>
                     </div>
                     <div class="d-flex">
