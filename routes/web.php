@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,9 +24,18 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function () {
     Route::get('dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index']);
+    // route category
 
-    Route::get('category', [App\Http\Controllers\Admin\CategoryController::class, 'index']);
-    Route::get('category/create', [App\Http\Controllers\Admin\CategoryController::class, 'create']);
-    Route::post('category', [App\Http\Controllers\Admin\CategoryController::class, 'store']);
-
+    Route::controller(App\Http\Controllers\Admin\CategoryController::class)->group(function () {
+        Route::get('/category', 'index');
+        Route::get('/category/create', 'create');
+        Route::post('/category', 'store');
+        Route::get('/category/{category_id}/update', 'edit');
+        Route::put('/category/{category_id}', 'update');
+        // 'admin/category/' . $category->id
+        // admin/dashboard/' . $category->id . '/edit'
+    });
+    // Route::get('category', [App\Http\Controllers\Admin\CategoryController::class, 'index']);
+    // Route::get('category/create', [App\Http\Controllers\Admin\CategoryController::class, 'create']);
+    // Route::post('category', [App\Http\Controllers\Admin\CategoryController::class, 'store']);
 });

@@ -15,7 +15,7 @@
             </a>
             <div class="collapse" id="ui-basic">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"><a class="nav-link" href="{{ url('admin/category') }}"> Add Category</a>
+                    <li class="nav-item"><a class="nav-link" href="{{ url('admin/category') }}"> Data Category</a>
                     </li>
                     <li class="nav-item"><a class="nav-link" href="{{ url('admin/category/create') }}"> Create
                             Category</a>
