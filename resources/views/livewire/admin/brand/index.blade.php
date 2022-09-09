@@ -3,6 +3,9 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card">
+                @if (session('message'))
+                    <h2 class="alert alert-success w-full">{{ session('message') }}</h2>
+                @endif
                 <div class="card-header">
                     <h4 class="mt-1">Brands List
                         <button type="button" class="btn btn-primary btn-sm float-end" data-bs-toggle="modal"
@@ -30,8 +33,12 @@
                                     <td>{{ $brand->slug }}</td>
                                     <td>{{ $brand->status == '1' ? 'hidden' : 'visible' }}</td>
                                     <td>
-                                        <a href="" class="btn btn-warning">edit</a>
-                                        <a href="" class="btn btn-danger">hapus</a>
+                                        <a href="" wire:click="updateBrand({{ $brand->id }})"
+                                            data-bs-toggle="modal" data-bs-target="#updateBrands"
+                                            class="btn btn-warning">edit</a>
+                                        <a data-bs-toggle="modal" data-bs-target="#deleteBrands"
+                                            wire:click="deleteBrands({{ $brand->id }})" href=""
+                                            class="btn btn-danger">hapus</a>
                                     </td>
                                 </tr>
                             @empty
@@ -53,6 +60,8 @@
     <script>
         window.addEventListener('close-modal', event => {
             $('#addBrandModal').modal('hide');
+            $('#updateBrands').modal('hide');
+            $('#deleteBrands').modal('hide');
         });
     </script>
 @endpush
