@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="{{ asset('admin/css/style.css') }}">
     <!-- endinject -->
     <link rel="shortcut icon" href="{{ asset('admin/images/favicon.png') }}" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     @livewireStyles
 </head>
 
